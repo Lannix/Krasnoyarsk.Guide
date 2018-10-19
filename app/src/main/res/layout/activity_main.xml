@@ -18,9 +18,20 @@
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-            android:textSize="49dp"
+            android:layout_marginTop="150dp"
+            android:layout_centerHorizontal="true"
+            android:textSize="50dp"
             android:text="Тут Будет Карта" />
+
+        <Button
+            android:id="@+id/GoToMap"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="140dp"
+            android:layout_marginTop="65dp"
+            android:text="К карте" />
         <!--<ImageView
             android:id="@+id/imageView"
             android:layout_width="wrap_content"

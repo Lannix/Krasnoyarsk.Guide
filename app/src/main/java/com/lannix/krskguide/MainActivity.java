@@ -1,15 +1,19 @@
 package com.lannix.krskguide;
 
 import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.Button;
+
 import java.util.Vector;
 
 public class MainActivity extends AppCompatActivity  implements FragmentM{
 
-
+    Button button;
     FirstFragment firstFragment =new FirstFragment();
     SecondFragment secondFragment=new SecondFragment();
     ThirdFragment thirdFragment = new ThirdFragment();
@@ -60,6 +64,15 @@ public class MainActivity extends AppCompatActivity  implements FragmentM{
                 .replace(R.id.fifthChare, fifthFragment);
         // .addToBackStack();
         fragmentTransaction5.commit();
+
+
+        button= (Button) findViewById(R.id.GoToMap);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getBaseContext(), MainMap.class));
+            }
+        });
 
 
 

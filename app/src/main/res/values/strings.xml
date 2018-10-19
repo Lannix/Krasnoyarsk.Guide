@@ -25,4 +25,5 @@
     <string name="log_in">Log in</string>
     <string name="name">Ник</string>
     <string name="Create">Создание Аккаунта</string>
+    <string name="title_activity_main_map">Map</string>
 </resources>
