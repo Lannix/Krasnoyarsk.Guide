@@ -1,13 +1,13 @@
-package com.lannix.krskguide;
+package com.example.lannix.krskguide;
 
 import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.lannix.krskguide.R;
 
 
 public class FourthFragment extends Fragment {
@@ -23,8 +23,8 @@ FragmentM fragment;
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof com.lannix.krskguide.FragmentM) {
-            fragment = (com.lannix.krskguide.FragmentM) context;
+        if (context instanceof FragmentM) {
+            fragment = (FragmentM) context;
         } else {
             throw new RuntimeException(context.toString()
                     + " must implement OnFragmentInteractionListener");

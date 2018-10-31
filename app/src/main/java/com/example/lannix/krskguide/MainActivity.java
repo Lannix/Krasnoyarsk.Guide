@@ -1,15 +1,12 @@
-package com.lannix.krskguide;
+package com.example.lannix.krskguide;
 
-import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
 
-import java.util.Vector;
+import com.example.lannix.krskguide.R;
 
 public class MainActivity extends AppCompatActivity  implements FragmentM{
 

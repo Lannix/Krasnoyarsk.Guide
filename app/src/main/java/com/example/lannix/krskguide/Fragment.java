@@ -1,4 +1,4 @@
-package com.lannix.krskguide;
+package com.example.lannix.krskguide;
 
 public interface Fragment {
     void fragmentLogin();

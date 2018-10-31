@@ -1,4 +1,4 @@
-package com.lannix.krskguide;
+package com.example.lannix.krskguide;
 
 import android.content.Context;
 import android.net.Uri;
@@ -8,7 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.lannix.krskguide.R;
+import com.example.lannix.krskguide.R;
 
 
 class Card {

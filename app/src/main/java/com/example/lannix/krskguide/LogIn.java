@@ -1,7 +1,6 @@
-package com.lannix.krskguide;
+package com.example.lannix.krskguide;
 
 import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -9,11 +8,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.example.lannix.krskguide.R;
+
 
 public class LogIn extends Fragment {
     Button LogBTn;
 
-    private com.lannix.krskguide.Fragment fragment;
+    private com.example.lannix.krskguide.Fragment fragment;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -33,8 +34,8 @@ public class LogIn extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof com.lannix.krskguide.Fragment) {
-            fragment = (com.lannix.krskguide.Fragment) context;
+        if (context instanceof com.example.lannix.krskguide.Fragment) {
+            fragment = (com.example.lannix.krskguide.Fragment) context;
         } else {
             throw new RuntimeException(context.toString()
                     + " must implement OnFragment1DataListener");
