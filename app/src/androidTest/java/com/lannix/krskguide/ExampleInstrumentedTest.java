@@ -1,4 +1,4 @@
-package com.lannix.krskguide;
+package com.example.lannix.krskguide;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

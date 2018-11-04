@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "40447364610",
+    "firebase_url": "https://krasnoyarsk-guide-166b4.firebaseio.com",
+    "project_id": "krasnoyarsk-guide-166b4",
+    "storage_bucket": "krasnoyarsk-guide-166b4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:40447364610:android:4aff1793c370e73b",
+        "android_client_info": {
+          "package_name": "com.example.lannix.krskguide"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "40447364610-q34k6sag2urhj63ht4inltj219dk7rtj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.lannix.krskguide",
+            "certificate_hash": "58d74e3b1a352bc99451acf1ba60b3366aeb1572"
+          }
+        },
+        {
+          "client_id": "40447364610-th6qmsrbmc9o7l3j33eug7bm9qtpguqr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDW3g0u3fe7df2ri05T-q72QxZ13nJ-vaY"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "40447364610-th6qmsrbmc9o7l3j33eug7bm9qtpguqr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
