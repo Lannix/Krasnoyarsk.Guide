@@ -7,20 +7,23 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.lannix.krskguide.R;
+import com.example.lannix.krskguide.database.DBSights;
 
-public class MainActivity extends AppCompatActivity  implements FragmentM{
+public class MainActivity extends AppCompatActivity implements FragmentM {
 
     Button button;
-    FirstFragment firstFragment =new FirstFragment();
-    SecondFragment secondFragment=new SecondFragment();
+    FirstFragment firstFragment = new FirstFragment();
+    SecondFragment secondFragment = new SecondFragment();
     ThirdFragment thirdFragment = new ThirdFragment();
-    FourthFragment fourthFragment= new FourthFragment();
-    FifthFragment fifthFragment= new FifthFragment();
+    FourthFragment fourthFragment = new FourthFragment();
+    FifthFragment fifthFragment = new FifthFragment();
     Bundle bundleM1 = new Bundle();
     Bundle bundleM2 = new Bundle();
     Bundle bundleM3 = new Bundle();
     Bundle bundleM4 = new Bundle();
     Bundle bundleM5 = new Bundle();
+
+    public static DBSights dbSights;
 
 
     @Override
@@ -63,7 +66,7 @@ public class MainActivity extends AppCompatActivity  implements FragmentM{
         fragmentTransaction5.commit();
 
 
-        button= (Button) findViewById(R.id.GoToMap);
+        button = (Button) findViewById(R.id.GoToMap);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -72,7 +75,7 @@ public class MainActivity extends AppCompatActivity  implements FragmentM{
         });
 
 
-
+        dbSights = new DBSights(this);
     }
 
 
