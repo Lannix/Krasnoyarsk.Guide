@@ -1,6 +1,7 @@
 package com.example.lannix.krskguide;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.location.Location;
@@ -15,6 +16,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -27,6 +29,8 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.CameraPosition;
+import com.google.android.gms.maps.model.GroundOverlay;
+import com.google.android.gms.maps.model.GroundOverlayOptions;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.MapStyleOptions;
@@ -57,6 +61,9 @@ public class MainMap extends FragmentActivity implements OnMapReadyCallback,Goog
         mapFragment.getMapAsync(this);
 
 
+
+
+
     }
     @Override
     public void onMapReady(GoogleMap googleMap) {
@@ -74,15 +81,31 @@ public class MainMap extends FragmentActivity implements OnMapReadyCallback,Goog
         } catch (Resources.NotFoundException e) {
             Log.e(TAG, "Can't find style. Error: ", e);
         }
-
-        LatLngBounds ADELAIDE = new LatLngBounds(
+        GoogleMap.OnGroundOverlayClickListener mClickListener = new GoogleMap.OnGroundOverlayClickListener(){
+            @Override
+            public void onGroundOverlayClick(GroundOverlay groundOverlay) {
+                startActivity(new Intent(getBaseContext(), DescriptionActivity.class));
+            }
+        };
+        googleMap.setOnGroundOverlayClickListener(mClickListener);
+        LatLngBounds boxOfCamera = new LatLngBounds(
                 new LatLng(55.899683, 92.733175), new LatLng(56.155407, 93.069893));
-// Constrain the camera target to the Adelaide bounds.
-        googleMap.setLatLngBoundsForCameraTarget(ADELAIDE);
-        LatLng sydney = new LatLng(56.030727, 92.914512);
-        googleMap.addMarker(new MarkerOptions().position(sydney).icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_gorki))).setTitle("kssf");
 
-        googleMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        googleMap.setLatLngBoundsForCameraTarget(boxOfCamera);
+        LatLng testLat = new LatLng(55.969994, 92.786536);
+
+       GroundOverlayOptions newarkMap = new GroundOverlayOptions()
+                .image(BitmapDescriptorFactory.fromResource(R.mipmap.ic_gorki_round))
+                .position(testLat, 360f, 350f)
+                .clickable(true);
+        GroundOverlay mSydney=googleMap.addGroundOverlay(newarkMap);
+        mSydney.setTag("aaaaaaaaaa");
+        mSydney.getTag();
+
+        googleMap.addGroundOverlay(newarkMap);
+
+//перетаскивает камиру над меткой
+        googleMap.moveCamera(CameraUpdateFactory.newLatLng(testLat));
 
     }
     @Override
