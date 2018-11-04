@@ -25,6 +25,7 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
@@ -75,12 +76,12 @@ public class MainMap extends FragmentActivity implements OnMapReadyCallback,Goog
         }
 
         LatLngBounds ADELAIDE = new LatLngBounds(
-                new LatLng(55.899683, 92.733175), new LatLng(56.148209, 93.076496));
+                new LatLng(55.899683, 92.733175), new LatLng(56.155407, 93.069893));
 // Constrain the camera target to the Adelaide bounds.
         googleMap.setLatLngBoundsForCameraTarget(ADELAIDE);
         LatLng sydney = new LatLng(56.030727, 92.914512);
-        googleMap.addMarker(new MarkerOptions().position(sydney)
-                .title("Marker in Sydney"));
+        googleMap.addMarker(new MarkerOptions().position(sydney).icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_gorki))).setTitle("kssf");
+
         googleMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
 
     }
