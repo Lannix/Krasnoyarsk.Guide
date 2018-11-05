@@ -3,14 +3,12 @@ package com.example.lannix.krskguide;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.lannix.krskguide.R;
 import com.example.lannix.krskguide.recyclerView.CardObject;
 import com.example.lannix.krskguide.recyclerView.RVAdapter;
 
@@ -30,7 +28,7 @@ public class FirstFragment extends Fragment {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(inflater.getContext());
         recyclerView.setLayoutManager(linearLayoutManager);
 
-        RVAdapter rvAdapter = new RVAdapter(initTestData(), getContext());
+        RVAdapter rvAdapter = new RVAdapter(getData(), getContext());
         recyclerView.setAdapter(rvAdapter);
         return view;
     }
@@ -47,7 +45,8 @@ public class FirstFragment extends Fragment {
         }
     }
 
-    private ArrayList<CardObject> initTestData() {
+    private ArrayList<CardObject> getData() {
+        //Test Data
         ArrayList<CardObject> cardObjects = new ArrayList<>();
         cardObjects.add(new CardObject("Название", "Описание", R.drawable.bobr_log));
         cardObjects.add(new CardObject("Название", "Описание", R.drawable.bobr_log));
