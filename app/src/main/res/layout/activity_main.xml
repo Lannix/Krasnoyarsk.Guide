@@ -37,7 +37,7 @@
                     android:layout_margin="6dp"
                     android:text="@string/city_name"
                     android:textColor="@color/textColor"
-                    android:textSize="30sp" />
+                    android:textSize="24sp" />
 
             </RelativeLayout>
         </LinearLayout>
