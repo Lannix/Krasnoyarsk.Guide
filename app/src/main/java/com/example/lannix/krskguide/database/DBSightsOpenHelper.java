@@ -4,7 +4,7 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-public class OpenHelper extends SQLiteOpenHelper {
+public class DBSightsOpenHelper extends SQLiteOpenHelper {
 
     // Данные базы данных и таблиц
     protected static final String DATABASE_NAME = "Krasnoyarsk.db";
@@ -31,7 +31,7 @@ public class OpenHelper extends SQLiteOpenHelper {
     protected static final int NUM_COLUMN_DESCRIPTION_TEXT = 6;
     protected static final int NUM_COLUMN_ADDRESS = 7;
 
-    OpenHelper(Context context) {
+    DBSightsOpenHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
