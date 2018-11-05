@@ -10,28 +10,27 @@ import com.example.lannix.krskguide.R;
 
 import java.util.ArrayList;
 
-import static com.example.lannix.krskguide.database.OpenHelper.COLUMN_ADDRESS;
-import static com.example.lannix.krskguide.database.OpenHelper.COLUMN_COORDINATE_LATITUDE;
-import static com.example.lannix.krskguide.database.OpenHelper.COLUMN_COORDINATE_LONGITUDE;
-import static com.example.lannix.krskguide.database.OpenHelper.COLUMN_DESCRIPTION_IMAGES;
-import static com.example.lannix.krskguide.database.OpenHelper.COLUMN_DESCRIPTION_TEXT;
-import static com.example.lannix.krskguide.database.OpenHelper.COLUMN_ID;
-import static com.example.lannix.krskguide.database.OpenHelper.COLUMN_MAP_IMAGE_ID;
-import static com.example.lannix.krskguide.database.OpenHelper.COLUMN_NAME;
-import static com.example.lannix.krskguide.database.OpenHelper.TABLE_NAME;
+import static com.example.lannix.krskguide.database.DBSightsOpenHelper.COLUMN_ADDRESS;
+import static com.example.lannix.krskguide.database.DBSightsOpenHelper.COLUMN_COORDINATE_LATITUDE;
+import static com.example.lannix.krskguide.database.DBSightsOpenHelper.COLUMN_COORDINATE_LONGITUDE;
+import static com.example.lannix.krskguide.database.DBSightsOpenHelper.COLUMN_DESCRIPTION_IMAGES;
+import static com.example.lannix.krskguide.database.DBSightsOpenHelper.COLUMN_DESCRIPTION_TEXT;
+import static com.example.lannix.krskguide.database.DBSightsOpenHelper.COLUMN_ID;
+import static com.example.lannix.krskguide.database.DBSightsOpenHelper.COLUMN_MAP_IMAGE_ID;
+import static com.example.lannix.krskguide.database.DBSightsOpenHelper.COLUMN_NAME;
+import static com.example.lannix.krskguide.database.DBSightsOpenHelper.TABLE_NAME;
 
 public class DBSights {
 
     private SQLiteDatabase mDataBase;
-    private OpenHelper mOpenHelper;
+    private DBSightsOpenHelper mDBSightsOpenHelper;
 
     public DBSights(Context context) {
-        mOpenHelper = new OpenHelper(context);
-        mDataBase = mOpenHelper.getWritableDatabase();
+        mDBSightsOpenHelper = new DBSightsOpenHelper(context);
+        mDataBase = mDBSightsOpenHelper.getWritableDatabase();
 
         //Добавление ненужной информации
         addStuffData();
-        testData();
     }
 
     public long insert(Sight sight) {
