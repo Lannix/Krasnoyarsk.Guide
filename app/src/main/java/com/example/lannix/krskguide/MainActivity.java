@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import com.example.lannix.krskguide.R;
 import com.example.lannix.krskguide.database.DBSights;
 
 public class MainActivity extends AppCompatActivity implements FragmentM {
@@ -23,7 +22,7 @@ public class MainActivity extends AppCompatActivity implements FragmentM {
     Bundle bundleM4 = new Bundle();
     Bundle bundleM5 = new Bundle();
 
-    public static DBSights dbSights;
+    public static DBSights DB_SIGHTS;
 
 
     @Override
@@ -75,7 +74,7 @@ public class MainActivity extends AppCompatActivity implements FragmentM {
         });
 
 
-        dbSights = new DBSights(this);
+        DB_SIGHTS = new DBSights(this);
     }
 
 
