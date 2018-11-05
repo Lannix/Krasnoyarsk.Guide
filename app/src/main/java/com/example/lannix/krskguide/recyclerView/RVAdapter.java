@@ -19,9 +19,9 @@ import java.util.ArrayList;
 public class RVAdapter extends RecyclerView.Adapter<RVAdapter.PersonViewHolder> {
 
     private Context context;
-    private ArrayList<CardObject> cards;
+    private ArrayList<SimpleCardObject> cards;
 
-    public RVAdapter(ArrayList<CardObject> cards, Context context) {
+    public RVAdapter(ArrayList<SimpleCardObject> cards, Context context) {
         this.cards = cards;
         this.context = context;
     }

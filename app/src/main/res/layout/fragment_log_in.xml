@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:gravity="center_horizontal"
     android:orientation="vertical"
-    tools:context="com.example.lannix.krskguide.LogIn">
+    tools:context="com.example.lannix.krskguide.fragment.login.LogIn">
 
     <LinearLayout
         android:id="@+id/mainBlockLayout"

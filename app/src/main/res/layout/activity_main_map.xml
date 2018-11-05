@@ -18,7 +18,7 @@
         map:cameraZoom="14"
         map:layout_constraintBottom_toBottomOf="parent"
         map:uiZoomControls="true"
-        tools:context="com.example.lannix.krskguide.MainMap" />
+        tools:context="com.example.lannix.krskguide.activity.map.MainMap" />
 
     <LinearLayout
         android:id="@+id/constraintLayoutMainMap"
