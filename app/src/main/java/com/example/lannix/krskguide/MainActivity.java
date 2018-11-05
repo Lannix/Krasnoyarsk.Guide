@@ -4,14 +4,13 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
+import android.widget.ImageView;
 
-import com.example.lannix.krskguide.R;
 import com.example.lannix.krskguide.database.DBSights;
 
 public class MainActivity extends AppCompatActivity implements FragmentM {
 
-    Button button;
+    ImageView mapImageView;
     FirstFragment firstFragment = new FirstFragment();
     SecondFragment secondFragment = new SecondFragment();
     ThirdFragment thirdFragment = new ThirdFragment();
@@ -23,7 +22,7 @@ public class MainActivity extends AppCompatActivity implements FragmentM {
     Bundle bundleM4 = new Bundle();
     Bundle bundleM5 = new Bundle();
 
-    public static DBSights dbSights;
+    public static DBSights DB_SIGHTS;
 
 
     @Override
@@ -33,20 +32,20 @@ public class MainActivity extends AppCompatActivity implements FragmentM {
         firstFragment.setArguments(bundleM1);
         android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager()
                 .beginTransaction()
-                .replace(R.id.firstChare, firstFragment);
+                .replace(R.id.firstPart, firstFragment);
         // .addToBackStack();
         fragmentTransaction.commit();
         secondFragment.setArguments(bundleM2);
         android.support.v4.app.FragmentTransaction fragmentTransaction2 = getSupportFragmentManager()
                 .beginTransaction()
-                .replace(R.id.secondChare, secondFragment);
+                .replace(R.id.secondPart, secondFragment);
         // .addToBackStack();
         fragmentTransaction2.commit();
 
         thirdFragment.setArguments(bundleM3);
         android.support.v4.app.FragmentTransaction fragmentTransaction3 = getSupportFragmentManager()
                 .beginTransaction()
-                .replace(R.id.thirdChare, thirdFragment);
+                .replace(R.id.thirdPart, thirdFragment);
         // .addToBackStack();
         fragmentTransaction3.commit();
 
@@ -54,20 +53,20 @@ public class MainActivity extends AppCompatActivity implements FragmentM {
         fourthFragment.setArguments(bundleM4);
         android.support.v4.app.FragmentTransaction fragmentTransaction4 = getSupportFragmentManager()
                 .beginTransaction()
-                .replace(R.id.fourthChare, fourthFragment);
+                .replace(R.id.fourthPart, fourthFragment);
         // .addToBackStack();
         fragmentTransaction4.commit();
 
         fifthFragment.setArguments(bundleM5);
         android.support.v4.app.FragmentTransaction fragmentTransaction5 = getSupportFragmentManager()
                 .beginTransaction()
-                .replace(R.id.fifthChare, fifthFragment);
+                .replace(R.id.fifthPart, fifthFragment);
         // .addToBackStack();
         fragmentTransaction5.commit();
 
 
-        button = (Button) findViewById(R.id.GoToMap);
-        button.setOnClickListener(new View.OnClickListener() {
+        mapImageView = findViewById(R.id.mapImageView);
+        mapImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getBaseContext(), MainMap.class));
@@ -75,7 +74,7 @@ public class MainActivity extends AppCompatActivity implements FragmentM {
         });
 
 
-        dbSights = new DBSights(this);
+        DB_SIGHTS = new DBSights(this);
     }
 
 

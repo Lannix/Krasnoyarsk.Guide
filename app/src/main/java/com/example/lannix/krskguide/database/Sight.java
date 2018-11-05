@@ -7,14 +7,14 @@ import com.google.gson.reflect.TypeToken;
 
 import java.util.List;
 
-import static com.example.lannix.krskguide.database.OpenHelper.NUM_COLUMN_ADDRESS;
-import static com.example.lannix.krskguide.database.OpenHelper.NUM_COLUMN_COORDINATE_LATITUDE;
-import static com.example.lannix.krskguide.database.OpenHelper.NUM_COLUMN_COORDINATE_LONGITUDE;
-import static com.example.lannix.krskguide.database.OpenHelper.NUM_COLUMN_DESCRIPTION_IMAGES;
-import static com.example.lannix.krskguide.database.OpenHelper.NUM_COLUMN_DESCRIPTION_TEXT;
-import static com.example.lannix.krskguide.database.OpenHelper.NUM_COLUMN_ID;
-import static com.example.lannix.krskguide.database.OpenHelper.NUM_COLUMN_MAP_IMAGE_ID;
-import static com.example.lannix.krskguide.database.OpenHelper.NUM_COLUMN_NAME;
+import static com.example.lannix.krskguide.database.DBSightsOpenHelper.NUM_COLUMN_ADDRESS;
+import static com.example.lannix.krskguide.database.DBSightsOpenHelper.NUM_COLUMN_COORDINATE_LATITUDE;
+import static com.example.lannix.krskguide.database.DBSightsOpenHelper.NUM_COLUMN_COORDINATE_LONGITUDE;
+import static com.example.lannix.krskguide.database.DBSightsOpenHelper.NUM_COLUMN_DESCRIPTION_IMAGES;
+import static com.example.lannix.krskguide.database.DBSightsOpenHelper.NUM_COLUMN_DESCRIPTION_TEXT;
+import static com.example.lannix.krskguide.database.DBSightsOpenHelper.NUM_COLUMN_ID;
+import static com.example.lannix.krskguide.database.DBSightsOpenHelper.NUM_COLUMN_MAP_IMAGE_ID;
+import static com.example.lannix.krskguide.database.DBSightsOpenHelper.NUM_COLUMN_NAME;
 
 public class Sight {
 

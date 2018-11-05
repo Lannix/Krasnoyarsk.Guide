@@ -22,6 +22,7 @@ public class LoginActivity extends AppCompatActivity implements Fragment  {
         AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
         loginFragment.setArguments(bundle);
         android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager()
                 .beginTransaction()
