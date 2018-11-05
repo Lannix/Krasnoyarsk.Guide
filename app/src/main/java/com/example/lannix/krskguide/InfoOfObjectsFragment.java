@@ -1,11 +1,16 @@
 package com.example.lannix.krskguide;
 
 import android.content.Context;
+import android.content.Intent;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.lannix.krskguide.database.Sight;
 
@@ -14,6 +19,11 @@ import static com.example.lannix.krskguide.MainMap.TAG;
 
 
 public class InfoOfObjectsFragment extends Fragment {
+    ImageView imageView;
+    Button button;
+    TextView textViewName;
+    TextView textViewAddress;
+    int id;
 
     private com.example.lannix.krskguide.FragmentMgMap fragment;
     @Override
@@ -21,8 +31,26 @@ public class InfoOfObjectsFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view= inflater.inflate(R.layout.fragment_info_of_objects, container, false);
 
-        //int id = savedInstanceState.getInt(TAG);
-        //Sight sight = DB_SIGHTS.select(id);
+        imageView = view.findViewById(R.id.imageViewInfo);
+        button=view.findViewById(R.id.buttonInfo);
+        textViewAddress=view.findViewById(R.id.textView3Info);
+        textViewName=view.findViewById(R.id.textView2Info);
+
+        id =Integer.valueOf(getArguments().getString(TAG));
+        Sight sight = DB_SIGHTS.select(id);
+        imageView.setImageBitmap(BitmapFactory.decodeResource(getResources(), sight.getDescription_images().get(0)));
+        textViewName.setText(sight.getName());
+        textViewAddress.setText(sight.getAddress());
+
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent mIntent = new Intent(getActivity(), DescriptionActivity.class);
+                mIntent.putExtra(TAG, String.valueOf(id));
+                startActivity(mIntent);
+            }
+        });
 
         return view;
     }

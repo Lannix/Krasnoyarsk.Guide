@@ -9,6 +9,7 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 
+import com.example.lannix.krskguide.database.Sight;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -21,10 +22,14 @@ import com.google.android.gms.maps.model.GroundOverlayOptions;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.MapStyleOptions;
+import com.google.android.gms.maps.model.Marker;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PointOfInterest;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.example.lannix.krskguide.MainActivity.DB_SIGHTS;
 
 
 public class MainMap extends FragmentActivity implements OnMapReadyCallback,GoogleMap.OnPoiClickListener ,FragmentMgMap{
@@ -35,7 +40,7 @@ public class MainMap extends FragmentActivity implements OnMapReadyCallback,Goog
     Bundle bundle = new Bundle();
     private InfoOfObjectsFragment infoFragment=new InfoOfObjectsFragment();
     FragmentMgMap fragmentMgMap;
-
+    Marker marker;
     public static final String TAG = "tag";
 
 
@@ -51,7 +56,6 @@ public class MainMap extends FragmentActivity implements OnMapReadyCallback,Goog
 
         linearLayout=findViewById(R.id.constraintLayoutMainMap);
         linearLayout.setVisibility(View.INVISIBLE);
-
 
     }
     @Override
@@ -71,43 +75,70 @@ public class MainMap extends FragmentActivity implements OnMapReadyCallback,Goog
             Log.e(LOG_TAG, "Can't find style. Error: ", e);
         }
 
+        marker=googleMap.addMarker(new MarkerOptions().position(new LatLng(0,0)));
+        marker.setVisible(false);
 
 
-
+        //Слушатель клика по достопримечательностям
         GoogleMap.OnGroundOverlayClickListener mClickListener = new GoogleMap.OnGroundOverlayClickListener(){
             @Override
             public void onGroundOverlayClick(GroundOverlay groundOverlay) {
                 linearLayout.setVisibility(View.VISIBLE);
-                //bundle.putInt(TAG, (Integer) groundOverlay.getTag());
-                //CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLng(new LatLng(
-                 //       -27, 133));
-                //googleMap.animateCamera(cameraUpdate);
-                fragmentMapInfoCreate();
+                marker.setVisible(false);
+                String tg=String.valueOf(groundOverlay.getTag());
+                bundle.putString(TAG,tg );
+                infoFragment.setArguments(bundle);
 
-                //startActivity(new Intent(getBaseContext(), DescriptionActivity.class));
+                CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLng(groundOverlay.getPosition());
+                googleMap.animateCamera(cameraUpdate);
+                fragmentMapInfoCreate();
             }
         };
-
-
-
-
-
         googleMap.setOnGroundOverlayClickListener(mClickListener);
+
+
+
+
+        //Слушатель Клика по карте
+        GoogleMap.OnMapClickListener mapClickListener= new GoogleMap.OnMapClickListener() {
+            @Override
+            public void onMapClick(LatLng latLng) {
+
+                CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLng(latLng);
+                googleMap.animateCamera(cameraUpdate);
+                marker.setPosition(latLng);
+                marker.setVisible(true);
+                fragmentMapInfoDelete();
+            }
+        };
+        googleMap.setOnMapClickListener(mapClickListener);
+
+
+
+
+
         LatLngBounds boxOfCamera = new LatLngBounds(
                 new LatLng(55.899683, 92.733175), new LatLng(56.155407, 93.069893));
 
         googleMap.setLatLngBoundsForCameraTarget(boxOfCamera);
         LatLng testLat = new LatLng(55.969994, 92.786536);
 
-       GroundOverlayOptions newarkMap = new GroundOverlayOptions()
-                .image(BitmapDescriptorFactory.fromResource(R.mipmap.ic_gorki_round))
-                .position(testLat, 360f, 350f)
-                .clickable(true);
-        GroundOverlay mSydney=googleMap.addGroundOverlay(newarkMap);
-        mSydney.setTag("aaaaaaaaaa");
-        mSydney.getTag();
 
-        googleMap.addGroundOverlay(newarkMap);
+
+
+        ArrayList<Sight> dB=DB_SIGHTS.selectAll();
+        for(int i=0;i<dB.size();i++) {
+            GroundOverlay mSydney = googleMap.addGroundOverlay(new GroundOverlayOptions()
+                    .image(BitmapDescriptorFactory.fromResource(dB.get(i).getMap_image_id()))
+                    .position(new LatLng(dB.get(i).getCoordinates_latitude(),dB.get(i).getCoordinates_longitude()), 200f, 201f)
+                    .clickable(true));
+            mSydney.setTag(dB.get(i).getId());
+
+
+        }
+
+
+        //googleMap.addGroundOverlay(newarkMap);
 
 //перетаскивает камиру над меткой
         googleMap.moveCamera(CameraUpdateFactory.newLatLng(testLat));
