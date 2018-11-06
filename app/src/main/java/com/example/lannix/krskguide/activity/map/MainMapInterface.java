@@ -1,6 +1,6 @@
 package com.example.lannix.krskguide.activity.map;
 
-public interface FragmentMgMap {
+public interface MainMapInterface {
 
     void fragmentMapInfoCreate();
     void fragmentMapInfoDelete();

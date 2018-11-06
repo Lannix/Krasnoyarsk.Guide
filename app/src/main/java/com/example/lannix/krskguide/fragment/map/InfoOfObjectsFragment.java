@@ -12,7 +12,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.lannix.krskguide.activity.map.FragmentMgMap;
+import com.example.lannix.krskguide.activity.map.MainMapInterface;
 
 import com.example.lannix.krskguide.R;
 import com.example.lannix.krskguide.activity.description.DescriptionActivity;
@@ -29,7 +29,7 @@ public class InfoOfObjectsFragment extends Fragment {
     TextView textViewAddress;
     int id;
 
-    private FragmentMgMap fragment;
+    private MainMapInterface fragment;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -64,8 +64,8 @@ public class InfoOfObjectsFragment extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof FragmentMgMap) {
-            fragment = (FragmentMgMap) context;
+        if (context instanceof MainMapInterface) {
+            fragment = (MainMapInterface) context;
         } else {
             throw new RuntimeException(context.toString()
                     + " must implement OnFragmentInteractionListener");
