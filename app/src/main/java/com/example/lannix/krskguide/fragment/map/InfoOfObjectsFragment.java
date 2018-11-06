@@ -12,9 +12,10 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.lannix.krskguide.activity.map.FragmentMgMap;
+
 import com.example.lannix.krskguide.R;
 import com.example.lannix.krskguide.activity.description.DescriptionActivity;
-import com.example.lannix.krskguide.activity.map.FragmentMgMap;
 import com.example.lannix.krskguide.database.sight_db.Sight;
 
 import static com.example.lannix.krskguide.activity.main.MainActivity.DB_SIGHTS;
@@ -29,17 +30,18 @@ public class InfoOfObjectsFragment extends Fragment {
     int id;
 
     private FragmentMgMap fragment;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view= inflater.inflate(R.layout.fragment_info_of_objects, container, false);
+        View view = inflater.inflate(R.layout.fragment_info_of_objects, container, false);
 
         imageView = view.findViewById(R.id.imageViewInfo);
-        button=view.findViewById(R.id.buttonInfo);
-        textViewAddress=view.findViewById(R.id.textView3Info);
-        textViewName=view.findViewById(R.id.textView2Info);
+        button = view.findViewById(R.id.buttonInfo);
+        textViewAddress = view.findViewById(R.id.textView3Info);
+        textViewName = view.findViewById(R.id.textView2Info);
 
-        id =Integer.valueOf(getArguments().getString(TAG));
+        id = Integer.valueOf(getArguments().getString(TAG));
         Sight sight = DB_SIGHTS.select(id);
         imageView.setImageBitmap(BitmapFactory.decodeResource(getResources(), sight.getDescription_images().get(0)));
         textViewName.setText(sight.getName());

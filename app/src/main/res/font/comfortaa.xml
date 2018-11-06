@@ -3,13 +3,13 @@
     <font
         android:fontStyle="normal"
         android:fontWeight="400"
-        android:font="@font/open_sans_regular" />
+        android:font="@font/comfortaa_regular" />
     <font
         android:fontStyle="normal"
         android:fontWeight="400"
-        android:font="@font/open_sans_light" />
+        android:font="@font/comfortaa_light" />
     <font
         android:fontStyle="normal"
         android:fontWeight="400"
-        android:font="@font/open_sans_bold" />
+        android:font="@font/comfortaa_bold" />
 </font-family>

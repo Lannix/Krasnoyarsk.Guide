@@ -11,11 +11,10 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
             android:id="@+id/MapBlockLayout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="wrap_content">
 
             <ImageView
                 android:id="@+id/mapImageView"
@@ -24,23 +23,24 @@
                 android:scaleType="centerCrop"
                 android:src="@drawable/krsk_map" />
 
-            <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/cityNameTextView"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@color/colorPrimary">
+                android:layout_alignBottom="@+id/mapImageView"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="@font/comfortaa"
+                android:text="@string/city_name"
+                android:textColor="@color/textColor"
+                android:textSize="24sp" />
+        </RelativeLayout>
 
-                <TextView
-                    android:id="@+id/cityNameTextView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    android:layout_margin="6dp"
-                    android:text="@string/city_name"
-                    android:textColor="@color/textColor"
-                    android:textSize="24sp" />
-
-            </RelativeLayout>
-        </LinearLayout>
+        <View
+            android:id="@+id/view2"
+            android:layout_width="match_parent"
+            android:layout_height="16dp"
+            android:background="@color/colorPrimary" />
 
         <LinearLayout
             android:id="@+id/firstPart"
