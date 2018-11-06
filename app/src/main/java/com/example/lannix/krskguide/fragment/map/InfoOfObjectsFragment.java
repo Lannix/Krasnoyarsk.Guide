@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import com.example.lannix.krskguide.R;
 import com.example.lannix.krskguide.activity.description.DescriptionActivity;
+import com.example.lannix.krskguide.activity.map.FragmentMgMap;
 import com.example.lannix.krskguide.database.sight_db.Sight;
 
 import static com.example.lannix.krskguide.activity.main.MainActivity.DB_SIGHTS;

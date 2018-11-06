@@ -9,10 +9,9 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 
-import com.example.lannix.krskguide.fragment.map.FragmentMgMap;
-import com.example.lannix.krskguide.fragment.map.InfoOfObjectsFragment;
 import com.example.lannix.krskguide.R;
 import com.example.lannix.krskguide.database.sight_db.Sight;
+import com.example.lannix.krskguide.fragment.map.InfoOfObjectsFragment;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -42,10 +41,11 @@ public class MainMap extends FragmentActivity implements OnMapReadyCallback,Goog
     Bundle bundle = new Bundle();
     private InfoOfObjectsFragment infoFragment=new InfoOfObjectsFragment();
     FragmentMgMap fragmentMgMap;
-    Marker marker;
+    Marker markeR;
+    boolean isNoMarker;
     public static final String TAG = "tag";
-
-
+    private float zoom=14;
+    private ArrayList<GroundOverlay> arrayObjects;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,6 +58,7 @@ public class MainMap extends FragmentActivity implements OnMapReadyCallback,Goog
 
         linearLayout=findViewById(R.id.constraintLayoutMainMap);
         linearLayout.setVisibility(View.INVISIBLE);
+        isNoMarker =true;
 
     }
     @Override
@@ -77,8 +78,8 @@ public class MainMap extends FragmentActivity implements OnMapReadyCallback,Goog
             Log.e(LOG_TAG, "Can't find style. Error: ", e);
         }
 
-        marker=googleMap.addMarker(new MarkerOptions().position(new LatLng(0,0)));
-        marker.setVisible(false);
+        markeR =googleMap.addMarker(new MarkerOptions().position(new LatLng(0,0)));
+        markeR.setVisible(false);
 
 
         //Слушатель клика по достопримечательностям
@@ -86,7 +87,7 @@ public class MainMap extends FragmentActivity implements OnMapReadyCallback,Goog
             @Override
             public void onGroundOverlayClick(GroundOverlay groundOverlay) {
                 linearLayout.setVisibility(View.VISIBLE);
-                marker.setVisible(false);
+                markeR.setVisible(false);
                 String tg=String.valueOf(groundOverlay.getTag());
                 bundle.putString(TAG,tg );
                 infoFragment.setArguments(bundle);
@@ -108,8 +109,8 @@ public class MainMap extends FragmentActivity implements OnMapReadyCallback,Goog
 
                 CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLng(latLng);
                 googleMap.animateCamera(cameraUpdate);
-                marker.setPosition(latLng);
-                marker.setVisible(true);
+                markeR.setPosition(latLng);
+                markeR.setVisible(true);
                 fragmentMapInfoDelete();
             }
         };
@@ -119,31 +120,76 @@ public class MainMap extends FragmentActivity implements OnMapReadyCallback,Goog
 
 
 
+        //шлушатель клика по маркеру
+        GoogleMap.OnMarkerClickListener onMarkerClickListener=new GoogleMap.OnMarkerClickListener() {
+            @Override
+            public boolean onMarkerClick(Marker marker) {
+                if ((marker!=markeR)&&(isNoMarker)){
+                    linearLayout.setVisibility(View.VISIBLE);
+                    markeR.setVisible(false);
+                    String tg=String.valueOf(marker.getTag());
+                    bundle.putString(TAG,tg );
+                    infoFragment.setArguments(bundle);
+
+                    CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLng(marker.getPosition());
+                    googleMap.animateCamera(cameraUpdate);
+                    fragmentMapInfoCreate();
+
+                    //if (googleMap.getCameraPosition().zoom<)
+                }
+                return true;
+            }
+        };
+        googleMap.setOnMarkerClickListener(onMarkerClickListener);
+
+
+        final ArrayList<Sight> dB=DB_SIGHTS.selectAll();
+        GoogleMap.OnCameraMoveListener onCameraMoveListener=new GoogleMap.OnCameraMoveListener() {
+            @Override
+            public void onCameraMove() {
+                if (googleMap.getCameraPosition().zoom>=17.1){
+                    if(!isNoMarker) {googleMap.clear();drowMarker(dB,googleMap); isNoMarker=!isNoMarker;
+                    }
+                }else if(googleMap.getCameraPosition().zoom<17.1)if(isNoMarker){ googleMap.clear();drowNoMarker(dB,googleMap);isNoMarker=!isNoMarker;
+               }
+            }
+
+
+        };
+
+        googleMap.setOnCameraMoveListener(onCameraMoveListener);
+
+
+        arrayObjects=new ArrayList<>();
+
         LatLngBounds boxOfCamera = new LatLngBounds(
                 new LatLng(55.899683, 92.733175), new LatLng(56.155407, 93.069893));
 
         googleMap.setLatLngBoundsForCameraTarget(boxOfCamera);
-        LatLng testLat = new LatLng(55.969994, 92.786536);
+        LatLng testLat = new LatLng(56.008035, 92.869761);
+
+        googleMap.moveCamera(CameraUpdateFactory.newLatLng(testLat));
 
 
 
 
-        ArrayList<Sight> dB=DB_SIGHTS.selectAll();
         for(int i=0;i<dB.size();i++) {
-            GroundOverlay mSydney = googleMap.addGroundOverlay(new GroundOverlayOptions()
-                    .image(BitmapDescriptorFactory.fromResource(dB.get(i).getMap_image_id()))
-                    .position(new LatLng(dB.get(i).getCoordinates_latitude(),dB.get(i).getCoordinates_longitude()), 200f, 201f)
+            Marker nMarker=googleMap.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.fromResource(dB.get(i).getMap_image_id())).position(new LatLng(dB.get(i).getCoordinates_latitude(),dB.get(i).getCoordinates_longitude()))
+                    .position(new LatLng(dB.get(i).getCoordinates_latitude(),dB.get(i).getCoordinates_longitude())));
+            nMarker.setTag(dB.get(i).getId());
+                /*GroundOverlay groundOverlay=googleMap.addGroundOverlay(new GroundOverlayOptions()
+                    .image()
+                    .position(new LatLng(dB.get(i).getCoordinates_latitude(),dB.get(i).getCoordinates_longitude()), 1400f/zoom, 1400f/zoom)
                     .clickable(true));
-            mSydney.setTag(dB.get(i).getId());
+            groundOverlay.setTag(dB.get(i).getId());*/
 
-
-        }
+                }
 
 
         //googleMap.addGroundOverlay(newarkMap);
 
-//перетаскивает камиру над меткой
-        googleMap.moveCamera(CameraUpdateFactory.newLatLng(testLat));
+        //перетаскивает камиру над меткой
+
 
     }
     @Override
@@ -196,4 +242,28 @@ public class MainMap extends FragmentActivity implements OnMapReadyCallback,Goog
                 .commit();
 
     }
+    void drowNoMarker(ArrayList<Sight> dB, GoogleMap googleMap) {
+        for(int i=0;i<dB.size();i++) {
+        GroundOverlay groundOverlay=googleMap.addGroundOverlay(new GroundOverlayOptions()
+                .image(BitmapDescriptorFactory.fromResource(dB.get(i).getMap_image_id()))
+                .position(new LatLng(dB.get(i).getCoordinates_latitude(),dB.get(i).getCoordinates_longitude()), 75f, 75f)
+                .clickable(true));
+        groundOverlay.setTag(dB.get(i).getId());
+        }
+    }
+
+    void drowMarker(ArrayList<Sight> dB,GoogleMap googleMap){
+        for(int i=0;i<dB.size();i++) {
+            Marker nMarker=googleMap.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.fromResource(dB.get(i).getMap_image_id())).position(new LatLng(dB.get(i).getCoordinates_latitude(),dB.get(i).getCoordinates_longitude()))
+                    .position(new LatLng(dB.get(i).getCoordinates_latitude(),dB.get(i).getCoordinates_longitude())));
+            nMarker.setTag(dB.get(i).getId());
+
+    }
+
+
+
+
+
+
+}
 }
