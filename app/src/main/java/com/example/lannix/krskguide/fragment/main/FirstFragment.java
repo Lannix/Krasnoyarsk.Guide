@@ -12,8 +12,8 @@ import android.view.ViewGroup;
 import com.example.lannix.krskguide.R;
 import com.example.lannix.krskguide.activity.main.MainActivityInterface;
 import com.example.lannix.krskguide.database.article_db.Article;
-import com.example.lannix.krskguide.recyclerView.SimpleCardObject;
-import com.example.lannix.krskguide.recyclerView.RVAdapter;
+import com.example.lannix.krskguide.recyclerView.vertical.CardObject;
+import com.example.lannix.krskguide.recyclerView.vertical.VertRVAdapter;
 
 import java.util.ArrayList;
 
@@ -21,7 +21,8 @@ import static com.example.lannix.krskguide.activity.main.MainActivity.DB_ARTICLE
 
 
 public class FirstFragment extends Fragment {
-    MainActivityInterface fragment;
+    
+    private MainActivityInterface fragment;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -33,8 +34,8 @@ public class FirstFragment extends Fragment {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(inflater.getContext());
         recyclerView.setLayoutManager(linearLayoutManager);
 
-        RVAdapter rvAdapter = new RVAdapter(getData(), getContext());
-        recyclerView.setAdapter(rvAdapter);
+        VertRVAdapter vertRvAdapter = new VertRVAdapter(getData(), getContext());
+        recyclerView.setAdapter(vertRvAdapter);
         return view;
     }
 
@@ -50,13 +51,13 @@ public class FirstFragment extends Fragment {
         }
     }
 
-    private ArrayList<SimpleCardObject> getData() {
+    private ArrayList<CardObject> getData() {
         //Test Data
-        ArrayList<SimpleCardObject> simpleCardObjects = new ArrayList<>();
+        ArrayList<CardObject> cardObjects = new ArrayList<>();
         ArrayList<Article> articles = DB_ARTICLES.selectAll();
         for (int i = 0; i < articles.size() & i < 3; i++) {
-            simpleCardObjects.add(new SimpleCardObject(articles.get(i)));
+            cardObjects.add(new CardObject(articles.get(i)));
         }
-        return simpleCardObjects;
+        return cardObjects;
     }
 }

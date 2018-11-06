@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.ScrollView;
 
 import com.example.lannix.krskguide.fragment.main.FifthFragment;
 import com.example.lannix.krskguide.fragment.main.FirstFragment;
@@ -39,39 +40,19 @@ public class MainActivity extends AppCompatActivity implements MainActivityInter
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         firstFragment.setArguments(bundleM1);
+        secondFragment.setArguments(bundleM2);
+        thirdFragment.setArguments(bundleM3);
+        fourthFragment.setArguments(bundleM4);
+        fifthFragment.setArguments(bundleM5);
+
         android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager()
                 .beginTransaction()
-                .replace(R.id.firstPart, firstFragment);
-        // .addToBackStack();
-        fragmentTransaction.commit();
-        secondFragment.setArguments(bundleM2);
-        android.support.v4.app.FragmentTransaction fragmentTransaction2 = getSupportFragmentManager()
-                .beginTransaction()
+                .replace(R.id.firstPart, firstFragment)
                 .replace(R.id.secondPart, secondFragment);
-        // .addToBackStack();
-        fragmentTransaction2.commit();
-
-        thirdFragment.setArguments(bundleM3);
-        android.support.v4.app.FragmentTransaction fragmentTransaction3 = getSupportFragmentManager()
-                .beginTransaction()
-                .replace(R.id.thirdPart, thirdFragment);
-        // .addToBackStack();
-        fragmentTransaction3.commit();
-
-
-        fourthFragment.setArguments(bundleM4);
-        android.support.v4.app.FragmentTransaction fragmentTransaction4 = getSupportFragmentManager()
-                .beginTransaction()
-                .replace(R.id.fourthPart, fourthFragment);
-        // .addToBackStack();
-        fragmentTransaction4.commit();
-
-        fifthFragment.setArguments(bundleM5);
-        android.support.v4.app.FragmentTransaction fragmentTransaction5 = getSupportFragmentManager()
-                .beginTransaction()
-                .replace(R.id.fifthPart, fifthFragment);
-        // .addToBackStack();
-        fragmentTransaction5.commit();
+                //.replace(R.id.thirdPart, thirdFragment)
+                //.replace(R.id.fourthPart, fourthFragment)
+                //.replace(R.id.fifthPart, fifthFragment);
+        fragmentTransaction.commit();
 
 
         mapImageView = findViewById(R.id.mapImageView);
@@ -81,6 +62,9 @@ public class MainActivity extends AppCompatActivity implements MainActivityInter
                 startActivity(new Intent(getBaseContext(), MainMap.class));
             }
         });
+
+        ScrollView sv = findViewById(R.id.scrollView);
+        sv.scrollTo(0, 0);
 
 
         DB_SIGHTS = new DBSights(this);

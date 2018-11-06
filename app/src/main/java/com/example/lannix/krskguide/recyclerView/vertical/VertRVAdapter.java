@@ -1,4 +1,4 @@
-package com.example.lannix.krskguide.recyclerView;
+package com.example.lannix.krskguide.recyclerView.vertical;
 
 import android.content.Context;
 import android.graphics.BitmapFactory;
@@ -16,12 +16,12 @@ import com.example.lannix.krskguide.R;
 
 import java.util.ArrayList;
 
-public class RVAdapter extends RecyclerView.Adapter<RVAdapter.PersonViewHolder> {
+public class VertRVAdapter extends RecyclerView.Adapter<VertRVAdapter.PersonViewHolder> {
 
     private Context context;
-    private ArrayList<SimpleCardObject> cards;
+    private ArrayList<CardObject> cards;
 
-    public RVAdapter(ArrayList<SimpleCardObject> cards, Context context) {
+    public VertRVAdapter(ArrayList<CardObject> cards, Context context) {
         this.cards = cards;
         this.context = context;
     }
