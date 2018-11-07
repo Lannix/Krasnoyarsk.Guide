@@ -244,7 +244,7 @@ public class MainMap extends FragmentActivity implements OnMapReadyCallback, Goo
         for (int i = 0; i < dB.size(); i++) {
             GroundOverlay groundOverlay = googleMap.addGroundOverlay(new GroundOverlayOptions()
                     .image(BitmapDescriptorFactory.fromResource(dB.get(i).getMap_image_id()))
-                    .position(new LatLng(dB.get(i).getCoordinates_latitude(), dB.get(i).getCoordinates_longitude()), 75f, 75f)
+                    .position(new LatLng(dB.get(i).getCoordinates_latitude(), dB.get(i).getCoordinates_longitude()), 45f, 45f)
                     .clickable(true));
             groundOverlay.setTag(dB.get(i).getId());
         }
