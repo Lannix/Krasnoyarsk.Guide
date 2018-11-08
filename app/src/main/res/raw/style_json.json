@@ -133,7 +133,7 @@
     "elementType": "labels.text.fill",
     "stylers": [
       {
-        "color": "#447530"
+        "visibility": "off"
       }
     ]
   },

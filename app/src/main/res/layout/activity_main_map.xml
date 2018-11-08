@@ -15,7 +15,7 @@
         android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        map:cameraZoom="17"
+        map:cameraZoom="17.5"
         map:layout_constraintBottom_toBottomOf="parent"
         map:uiZoomControls="true"
         tools:context="com.example.lannix.krskguide.activity.map.MainMap" />

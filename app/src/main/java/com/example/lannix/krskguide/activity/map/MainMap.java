@@ -33,7 +33,7 @@ import java.util.List;
 import static com.example.lannix.krskguide.activity.main.MainActivity.DB_SIGHTS;
 
 
-public class MainMap extends FragmentActivity implements OnMapReadyCallback, GoogleMap.OnPoiClickListener, MainMapInterface {
+public class MainMap extends FragmentActivity implements OnMapReadyCallback, MainMapInterface {
     private List<LatLng> places = new ArrayList<>();
     private GoogleMap mMap;
     private LinearLayout linearLayout;
@@ -42,6 +42,7 @@ public class MainMap extends FragmentActivity implements OnMapReadyCallback, Goo
     private InfoOfObjectsFragment infoFragment = new InfoOfObjectsFragment();
     MainMapInterface mainMapInterface;
     Marker markeR;
+    boolean mFlag;
     boolean isNoMarker;
     public static final String TAG = "tag";
     private float zoom = 14;
@@ -60,12 +61,13 @@ public class MainMap extends FragmentActivity implements OnMapReadyCallback, Goo
         linearLayout = findViewById(R.id.constraintLayoutMainMap);
         linearLayout.setVisibility(View.INVISIBLE);
         isNoMarker = true;
+        mFlag=false;
 
     }
 
     @Override
     public void onMapReady(final GoogleMap googleMap) {
-        googleMap.setOnPoiClickListener(this);
+
         try {
             // Customise the styling of the base map using a JSON object defined
             // in a raw resource file.
@@ -80,8 +82,8 @@ public class MainMap extends FragmentActivity implements OnMapReadyCallback, Goo
             Log.e(LOG_TAG, "Can't find style. Error: ", e);
         }
 
-        markeR = googleMap.addMarker(new MarkerOptions().position(new LatLng(0, 0)));
-        markeR.setVisible(false);
+        markeR = googleMap.addMarker(new MarkerOptions().position(new LatLng(0,0)));
+        markeR.setVisible(true);
 
 
         //Слушатель клика по достопримечательностям
@@ -90,6 +92,7 @@ public class MainMap extends FragmentActivity implements OnMapReadyCallback, Goo
             public void onGroundOverlayClick(GroundOverlay groundOverlay) {
                 linearLayout.setVisibility(View.VISIBLE);
                 markeR.setVisible(false);
+                mFlag=false;
                 String tg = String.valueOf(groundOverlay.getTag());
                 bundle.putString(TAG, tg);
                 infoFragment.setArguments(bundle);
@@ -109,9 +112,12 @@ public class MainMap extends FragmentActivity implements OnMapReadyCallback, Goo
 
                 CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLng(latLng);
                 googleMap.animateCamera(cameraUpdate);
-                markeR.setPosition(latLng);
+
                 markeR.setVisible(true);
+                mFlag=true;
+
                 fragmentMapInfoDelete();
+                markeR.setPosition(latLng);
             }
         };
         googleMap.setOnMapClickListener(mapClickListener);
@@ -124,6 +130,7 @@ public class MainMap extends FragmentActivity implements OnMapReadyCallback, Goo
                 if ((marker != markeR) && (isNoMarker)) {
                     linearLayout.setVisibility(View.VISIBLE);
                     markeR.setVisible(false);
+                    mFlag=false;
                     String tg = String.valueOf(marker.getTag());
                     bundle.putString(TAG, tg);
                     infoFragment.setArguments(bundle);
@@ -141,9 +148,15 @@ public class MainMap extends FragmentActivity implements OnMapReadyCallback, Goo
 
 
         final ArrayList<Sight> dB = DB_SIGHTS.selectAll();
+
+
+
         GoogleMap.OnCameraMoveListener onCameraMoveListener = new GoogleMap.OnCameraMoveListener() {
             @Override
             public void onCameraMove() {
+
+
+
                 if (googleMap.getCameraPosition().zoom >= 17.1) {
                     if (!isNoMarker) {
                         googleMap.clear();
@@ -194,14 +207,7 @@ public class MainMap extends FragmentActivity implements OnMapReadyCallback, Goo
 
     }
 
-    @Override
-    public void onPoiClick(PointOfInterest poi) {
-        Toast.makeText(getApplicationContext(), "Clicked: " +
-                        poi.name + "\nPlace ID:" + poi.placeId +
-                        "\nLatitude:" + poi.latLng.latitude +
-                        " Longitude:" + poi.latLng.longitude,
-                Toast.LENGTH_SHORT).show();
-    }
+
 
 
     @Override
@@ -241,6 +247,8 @@ public class MainMap extends FragmentActivity implements OnMapReadyCallback, Goo
     }
 
     void drowNoMarker(ArrayList<Sight> dB, GoogleMap googleMap) {
+
+
         for (int i = 0; i < dB.size(); i++) {
             GroundOverlay groundOverlay = googleMap.addGroundOverlay(new GroundOverlayOptions()
                     .image(BitmapDescriptorFactory.fromResource(dB.get(i).getMap_image_id()))
@@ -248,16 +256,21 @@ public class MainMap extends FragmentActivity implements OnMapReadyCallback, Goo
                     .clickable(true));
             groundOverlay.setTag(dB.get(i).getId());
         }
+        markeR = googleMap.addMarker(new MarkerOptions().position(googleMap.getCameraPosition().target));
+        if (mFlag) markeR.setVisible(true);else markeR.setVisible(false);
     }
 
     void drowMarker(ArrayList<Sight> dB, GoogleMap googleMap) {
+
+
         for (int i = 0; i < dB.size(); i++) {
             Marker nMarker = googleMap.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.fromResource(dB.get(i).getMap_image_id())).position(new LatLng(dB.get(i).getCoordinates_latitude(), dB.get(i).getCoordinates_longitude()))
                     .position(new LatLng(dB.get(i).getCoordinates_latitude(), dB.get(i).getCoordinates_longitude())));
             nMarker.setTag(dB.get(i).getId());
 
         }
-
+        markeR = googleMap.addMarker(new MarkerOptions().position(googleMap.getCameraPosition().target));
+        if (mFlag) markeR.setVisible(true);else markeR.setVisible(false);
 
     }
 }
