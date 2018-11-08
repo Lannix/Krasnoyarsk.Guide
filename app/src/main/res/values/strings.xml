@@ -3,11 +3,15 @@
     <string name="city_name">Красноярск</string>
     <string name="title_activity_main_map">Map</string>
     <string name="go_to_map">Нажмите, чтобы перейти к карте</string>
+    <string name="back">Назад</string>
+    <string name="like">Нравится</string>
+    <string name="address">Адрес</string>
+    <string name="rate">Рейтинг</string>
 
     <!-- Login strings-->
     <string name="welcome">Добро пожаловать</string>
     <string name="prompt_password">Пароль</string>
-    <string name="sign_up"><u>Создать аккаунт</u></string>
+    <string name="sign_up">Создать аккаунт</string>
     <string name="sign_in">Войти</string>
     <string name="prompt_email">Почта</string>
     <string name="name">Ник</string>

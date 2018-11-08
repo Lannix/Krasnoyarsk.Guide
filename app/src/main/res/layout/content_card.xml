@@ -4,8 +4,9 @@
     android:id="@+id/aboutCityCardView"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginVertical="8dp"
     android:layout_marginHorizontal="4dp"
+    android:layout_marginVertical="8dp"
+    android:clickable="true"
     card_view:cardCornerRadius="3dp"
     card_view:cardElevation="5dp">
 

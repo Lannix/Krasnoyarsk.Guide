@@ -63,13 +63,8 @@ public class MainActivity extends AppCompatActivity implements MainActivityInter
             }
         });
 
-        ScrollView sv = findViewById(R.id.scrollView);
-        sv.scrollTo(0, 0);
-
 
         DB_SIGHTS = new DBSights(this);
         DB_ARTICLES = new DBArticles(this);
     }
-
-
 }

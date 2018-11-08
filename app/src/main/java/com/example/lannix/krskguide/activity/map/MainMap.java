@@ -43,7 +43,7 @@ public class MainMap extends FragmentActivity implements OnMapReadyCallback, Goo
     MainMapInterface mainMapInterface;
     Marker markeR;
     boolean isNoMarker;
-    public static final String TAG = "tag";
+    public static final String TAG = "map_tag";
     private float zoom = 14;
     private ArrayList<GroundOverlay> arrayObjects;
 
