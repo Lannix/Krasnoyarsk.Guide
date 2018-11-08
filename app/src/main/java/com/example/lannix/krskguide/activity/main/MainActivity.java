@@ -5,24 +5,23 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.ScrollView;
 
 import com.example.lannix.krskguide.fragment.main.FifthFragment;
-import com.example.lannix.krskguide.fragment.main.FirstFragment;
+import com.example.lannix.krskguide.fragment.main.ArticlesFragment;
 import com.example.lannix.krskguide.fragment.main.FourthFragment;
 import com.example.lannix.krskguide.activity.map.MainMap;
 import com.example.lannix.krskguide.R;
-import com.example.lannix.krskguide.fragment.main.SecondFragment;
-import com.example.lannix.krskguide.fragment.main.ThirdFragment;
+import com.example.lannix.krskguide.fragment.main.SightsFragment;
+import com.example.lannix.krskguide.fragment.main.ExcursionsFragment;
 import com.example.lannix.krskguide.database.article_db.DBArticles;
 import com.example.lannix.krskguide.database.sight_db.DBSights;
 
 public class MainActivity extends AppCompatActivity implements MainActivityInterface {
 
     ImageView mapImageView;
-    FirstFragment firstFragment = new FirstFragment();
-    SecondFragment secondFragment = new SecondFragment();
-    ThirdFragment thirdFragment = new ThirdFragment();
+    ArticlesFragment articlesFragment = new ArticlesFragment();
+    SightsFragment sightsFragment = new SightsFragment();
+    ExcursionsFragment excursionsFragment = new ExcursionsFragment();
     FourthFragment fourthFragment = new FourthFragment();
     FifthFragment fifthFragment = new FifthFragment();
     Bundle bundleM1 = new Bundle();
@@ -39,17 +38,17 @@ public class MainActivity extends AppCompatActivity implements MainActivityInter
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        firstFragment.setArguments(bundleM1);
-        secondFragment.setArguments(bundleM2);
-        thirdFragment.setArguments(bundleM3);
+        articlesFragment.setArguments(bundleM1);
+        sightsFragment.setArguments(bundleM2);
+        excursionsFragment.setArguments(bundleM3);
         fourthFragment.setArguments(bundleM4);
         fifthFragment.setArguments(bundleM5);
 
         android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager()
                 .beginTransaction()
-                .replace(R.id.firstPart, firstFragment)
-                .replace(R.id.secondPart, secondFragment);
-                //.replace(R.id.thirdPart, thirdFragment)
+                .replace(R.id.firstPart, articlesFragment)
+                .replace(R.id.secondPart, sightsFragment)
+                .replace(R.id.thirdPart, excursionsFragment);
                 //.replace(R.id.fourthPart, fourthFragment)
                 //.replace(R.id.fifthPart, fifthFragment);
         fragmentTransaction.commit();

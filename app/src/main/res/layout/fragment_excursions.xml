@@ -2,33 +2,31 @@
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/sigthsCardView"
+    android:id="@+id/excursionsCardView"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
     card_view:cardCornerRadius="3dp"
-    card_view:cardElevation="5dp">
+    card_view:cardElevation="5dp"
+    tools:context="com.example.lannix.krskguide.fragment.main.ExcursionsFragment">
 
     <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="6dp"
-        android:background="@color/backgroundPrimary"
-        tools:context="com.example.lannix.krskguide.fragment.main.FirstFragment">
+        android:background="@color/backgroundPrimary">
 
         <TextView
-            android:id="@+id/titleTextView"
+            android:id="@+id/excursionTitleTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
             android:fontFamily="@font/comfortaa"
-            android:text="@string/sights"
+            android:text="@string/excursions"
             android:textColor="@color/textColor"
             android:textSize="16sp"
-            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -42,10 +40,10 @@
             android:background="@color/subTextColor"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/titleTextView" />
+            app:layout_constraintTop_toBottomOf="@+id/excursionTitleTextView" />
 
         <android.support.v7.widget.RecyclerView
-            android:id="@+id/sightsRecyclerView"
+            android:id="@+id/excursionsRecyclerView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -67,7 +65,7 @@
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/sightsRecyclerView" />
+            app:layout_constraintTop_toBottomOf="@+id/excursionsRecyclerView" />
 
     </android.support.constraint.ConstraintLayout>
 </android.support.v7.widget.CardView>

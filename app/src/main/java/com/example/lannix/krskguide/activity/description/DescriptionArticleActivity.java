@@ -11,10 +11,9 @@ import android.widget.TextView;
 
 import com.example.lannix.krskguide.R;
 import com.example.lannix.krskguide.database.article_db.Article;
-import com.example.lannix.krskguide.database.article_db.DBArticles;
 
 import static com.example.lannix.krskguide.activity.main.MainActivity.DB_ARTICLES;
-import static com.example.lannix.krskguide.fragment.main.FirstFragment.DATA_ID_TEG;
+import static com.example.lannix.krskguide.fragment.main.ArticlesFragment.DATA_ID_TEG;
 
 public class DescriptionArticleActivity extends AppCompatActivity {
 

@@ -12,33 +12,28 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.lannix.krskguide.R;
-import com.example.lannix.krskguide.activity.description.DescriptionArticleActivity;
 import com.example.lannix.krskguide.activity.description.DescriptionSightActivity;
 import com.example.lannix.krskguide.activity.main.MainActivityInterface;
-import com.example.lannix.krskguide.database.article_db.Article;
 import com.example.lannix.krskguide.database.sight_db.Sight;
 import com.example.lannix.krskguide.recyclerView.horizontal.HorRVAdapter;
 import com.example.lannix.krskguide.recyclerView.horizontal.SimpleCardObject;
-import com.example.lannix.krskguide.recyclerView.vertical.CardObject;
-import com.example.lannix.krskguide.recyclerView.vertical.VertRVAdapter;
 
 import java.util.ArrayList;
 
 import static android.app.Activity.RESULT_OK;
-import static com.example.lannix.krskguide.activity.main.MainActivity.DB_ARTICLES;
 import static com.example.lannix.krskguide.activity.main.MainActivity.DB_SIGHTS;
-import static com.example.lannix.krskguide.fragment.main.FirstFragment.DATA_ID_TEG;
+import static com.example.lannix.krskguide.fragment.main.ArticlesFragment.DATA_ID_TEG;
 
 
-public class SecondFragment extends Fragment {
+public class SightsFragment extends Fragment {
 
     private MainActivityInterface fragment;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_second, container, false);
-        final RecyclerView recyclerView = view.findViewById(R.id.sightsRecyclerView);
+        View view = inflater.inflate(R.layout.fragment_sights, container, false);
+        final RecyclerView recyclerView = view.findViewById(R.id.excursionSightsRecyclerView);
         recyclerView.setHasFixedSize(true);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(inflater.getContext(), LinearLayoutManager.HORIZONTAL, false);

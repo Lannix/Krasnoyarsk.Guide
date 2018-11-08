@@ -53,7 +53,7 @@ public class VertRVAdapter extends RecyclerView.Adapter<VertRVAdapter.PersonView
         PersonViewHolder(View itemView) {
             super(itemView);
             cardView = itemView.findViewById(R.id.aboutCityCardView);
-            titleTextView = itemView.findViewById(R.id.titleTextView);
+            titleTextView = itemView.findViewById(R.id.excursionTitleTextView);
             mainTextView = itemView.findViewById(R.id.mainTextView);
             cardImageView = itemView.findViewById(R.id.cardImageView);
         }

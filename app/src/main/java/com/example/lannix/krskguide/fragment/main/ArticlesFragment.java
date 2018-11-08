@@ -8,10 +8,8 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.example.lannix.krskguide.R;
 import com.example.lannix.krskguide.activity.description.DescriptionArticleActivity;
@@ -24,10 +22,9 @@ import java.util.ArrayList;
 
 import static android.app.Activity.RESULT_OK;
 import static com.example.lannix.krskguide.activity.main.MainActivity.DB_ARTICLES;
-import static com.example.lannix.krskguide.recyclerView.horizontal.SimpleCardObject.ARTICLE;
 
 
-public class FirstFragment extends Fragment {
+public class ArticlesFragment extends Fragment {
 
     public static final String DATA_ID_TEG = "data_id_tag";
 
@@ -36,7 +33,7 @@ public class FirstFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_first, container, false);
+        View view = inflater.inflate(R.layout.fragment_articles, container, false);
         final RecyclerView recyclerView = view.findViewById(R.id.aboutCityRecyclerView);
         recyclerView.setHasFixedSize(true);
 

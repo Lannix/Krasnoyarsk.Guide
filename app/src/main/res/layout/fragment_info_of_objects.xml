@@ -42,13 +42,13 @@
 
         <TextView
             android:id="@+id/sightDescriptionTextView"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_below="@+id/sightTitleTextView"
             android:layout_alignParentStart="true"
             android:layout_marginStart="16dp"
             android:layout_marginTop="24dp"
-            android:layout_marginEnd="12dp"
+            android:layout_marginEnd="16dp"
             android:layout_marginBottom="12dp"
             android:fontFamily="@font/comfortaa"
             android:text="Описание"
