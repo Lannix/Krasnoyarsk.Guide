@@ -12,7 +12,8 @@ import com.example.lannix.krskguide.activity.main.MainActivityInterface;
 
 
 public class FourthFragment extends Fragment {
-MainActivityInterface fragment;
+
+    private MainActivityInterface fragment;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

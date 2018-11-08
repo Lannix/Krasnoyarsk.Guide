@@ -1,6 +1,5 @@
 package com.example.lannix.krskguide.activity.description;
 
-import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -13,8 +12,7 @@ import com.example.lannix.krskguide.R;
 import com.example.lannix.krskguide.database.sight_db.Sight;
 
 import static com.example.lannix.krskguide.activity.main.MainActivity.DB_SIGHTS;
-import static com.example.lannix.krskguide.activity.map.MainMap.TAG;
-import static com.example.lannix.krskguide.fragment.main.FirstFragment.DATA_ID_TEG;
+import static com.example.lannix.krskguide.fragment.main.ArticlesFragment.DATA_ID_TEG;
 
 public class DescriptionSightActivity extends AppCompatActivity {
 

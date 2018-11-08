@@ -12,15 +12,15 @@ import com.example.lannix.krskguide.activity.main.MainActivityInterface;
 
 
 public class FifthFragment extends Fragment {
-    MainActivityInterface fragment;
+
+    private MainActivityInterface fragment;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
         return inflater.inflate(R.layout.fragment_fifth, container, false);
     }
-
-
 
 
     @Override

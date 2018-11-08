@@ -17,7 +17,7 @@
 
 
         <TextView
-            android:id="@+id/titleTextView"
+            android:id="@+id/excursionTitleTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -44,7 +44,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/cardImageView"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/titleTextView" />
+            app:layout_constraintTop_toBottomOf="@+id/excursionTitleTextView" />
 
         <ImageView
             android:id="@+id/cardImageView"

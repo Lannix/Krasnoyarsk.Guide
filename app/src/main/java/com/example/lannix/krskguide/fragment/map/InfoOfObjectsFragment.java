@@ -21,7 +21,7 @@ import com.example.lannix.krskguide.database.sight_db.Sight;
 import static android.app.Activity.RESULT_OK;
 import static com.example.lannix.krskguide.activity.main.MainActivity.DB_SIGHTS;
 import static com.example.lannix.krskguide.activity.map.MainMap.TAG;
-import static com.example.lannix.krskguide.fragment.main.FirstFragment.DATA_ID_TEG;
+import static com.example.lannix.krskguide.fragment.main.ArticlesFragment.DATA_ID_TEG;
 
 
 public class InfoOfObjectsFragment extends Fragment {
