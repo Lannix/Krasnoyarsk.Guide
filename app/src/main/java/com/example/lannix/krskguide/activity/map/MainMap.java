@@ -44,7 +44,7 @@ public class MainMap extends FragmentActivity implements OnMapReadyCallback, Mai
     Marker markeR;
     boolean mFlag;
     boolean isNoMarker;
-    public static final String TAG = "tag";
+    public static final String TAG = "map_tag";
     private float zoom = 14;
     private ArrayList<GroundOverlay> arrayObjects;
 

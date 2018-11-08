@@ -56,7 +56,8 @@
         <activity
             android:name=".activity.map.MainMap"
             android:label="@string/title_activity_main_map" />
-        <activity android:name=".activity.description.DescriptionActivity"></activity>
+        <activity android:name=".activity.description.DescriptionSightActivity" />
+        <activity android:name=".activity.description.DescriptionArticleActivity"></activity>
     </application>
 
 </manifest>

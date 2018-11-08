@@ -15,11 +15,13 @@ import android.widget.TextView;
 import com.example.lannix.krskguide.activity.map.MainMapInterface;
 
 import com.example.lannix.krskguide.R;
-import com.example.lannix.krskguide.activity.description.DescriptionActivity;
+import com.example.lannix.krskguide.activity.description.DescriptionSightActivity;
 import com.example.lannix.krskguide.database.sight_db.Sight;
 
+import static android.app.Activity.RESULT_OK;
 import static com.example.lannix.krskguide.activity.main.MainActivity.DB_SIGHTS;
 import static com.example.lannix.krskguide.activity.map.MainMap.TAG;
+import static com.example.lannix.krskguide.fragment.main.FirstFragment.DATA_ID_TEG;
 
 
 public class InfoOfObjectsFragment extends Fragment {
@@ -38,8 +40,8 @@ public class InfoOfObjectsFragment extends Fragment {
 
         imageView = view.findViewById(R.id.imageViewInfo);
         button = view.findViewById(R.id.buttonInfo);
-        textViewAddress = view.findViewById(R.id.textView3Info);
-        textViewName = view.findViewById(R.id.textView2Info);
+        textViewAddress = view.findViewById(R.id.sightDescriptionTextView);
+        textViewName = view.findViewById(R.id.sightTitleTextView);
 
         id = Integer.valueOf(getArguments().getString(TAG));
         Sight sight = DB_SIGHTS.select(id);
@@ -51,12 +53,11 @@ public class InfoOfObjectsFragment extends Fragment {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent mIntent = new Intent(getActivity(), DescriptionActivity.class);
-                mIntent.putExtra(TAG, String.valueOf(id));
-                startActivity(mIntent);
+                Intent mIntent = new Intent(getActivity(), DescriptionSightActivity.class);
+                mIntent.putExtra(DATA_ID_TEG, id);
+                startActivityForResult(mIntent, RESULT_OK);
             }
         });
-
         return view;
     }
 
@@ -71,6 +72,4 @@ public class InfoOfObjectsFragment extends Fragment {
                     + " must implement OnFragmentInteractionListener");
         }
     }
-
-
 }

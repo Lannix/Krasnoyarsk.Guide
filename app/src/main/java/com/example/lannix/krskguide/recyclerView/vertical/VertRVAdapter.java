@@ -10,7 +10,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.lannix.krskguide.R;
 
@@ -30,8 +29,7 @@ public class VertRVAdapter extends RecyclerView.Adapter<VertRVAdapter.PersonView
     @Override
     public PersonViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.content_card, viewGroup, false);
-        PersonViewHolder personViewHolder = new PersonViewHolder(view);
-        return personViewHolder;
+        return new PersonViewHolder(view);
     }
 
     @Override
@@ -52,19 +50,12 @@ public class VertRVAdapter extends RecyclerView.Adapter<VertRVAdapter.PersonView
         private TextView mainTextView;
         private ImageView cardImageView;
 
-        PersonViewHolder(final View itemView) {
+        PersonViewHolder(View itemView) {
             super(itemView);
             cardView = itemView.findViewById(R.id.aboutCityCardView);
             titleTextView = itemView.findViewById(R.id.titleTextView);
             mainTextView = itemView.findViewById(R.id.mainTextView);
             cardImageView = itemView.findViewById(R.id.cardImageView);
-
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Toast.makeText(itemView.getContext(), titleTextView.getText(), Toast.LENGTH_SHORT).show();
-                }
-            });
         }
 
         public CardView getCardView() {
@@ -98,5 +89,9 @@ public class VertRVAdapter extends RecyclerView.Adapter<VertRVAdapter.PersonView
         public void setCardImageView(ImageView cardImageView) {
             this.cardImageView = cardImageView;
         }
+    }
+
+    public ArrayList<CardObject> getCards() {
+        return cards;
     }
 }

@@ -10,7 +10,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.lannix.krskguide.R;
 
@@ -30,8 +29,7 @@ public class HorRVAdapter extends RecyclerView.Adapter<HorRVAdapter.PersonViewHo
     @Override
     public PersonViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.simple_content_card, viewGroup, false);
-        PersonViewHolder personViewHolder = new PersonViewHolder(view);
-        return personViewHolder;
+        return new PersonViewHolder(view);
     }
 
     @Override
@@ -55,13 +53,6 @@ public class HorRVAdapter extends RecyclerView.Adapter<HorRVAdapter.PersonViewHo
             cardView = itemView.findViewById(R.id.sightsCardView);
             titleTextView = itemView.findViewById(R.id.sightsTitleTextView);
             cardImageView = itemView.findViewById(R.id.sightCardImageView);
-
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Toast.makeText(itemView.getContext(), titleTextView.getText(), Toast.LENGTH_SHORT).show();
-                }
-            });
         }
 
         public CardView getCardView() {
@@ -87,5 +78,9 @@ public class HorRVAdapter extends RecyclerView.Adapter<HorRVAdapter.PersonViewHo
         public void setCardImageView(ImageView cardImageView) {
             this.cardImageView = cardImageView;
         }
+    }
+
+    public ArrayList<SimpleCardObject> getCards() {
+        return cards;
     }
 }
