@@ -7,6 +7,7 @@
     <string name="like">Нравится</string>
     <string name="address">Адрес</string>
     <string name="rate">Рейтинг</string>
+    <string name="read_more">Подробнее</string>
 
     <!-- Login strings-->
     <string name="welcome">Добро пожаловать</string>
